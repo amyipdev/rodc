@@ -15,13 +15,13 @@ def cli():
         assert len(sys.argv) == 3
         r = requests.put(target + "/sf/" + sys.argv[2],
                          headers={"X-RODC-Authentication": key},
-                         data=open(sys.argv[2]).read())
+                         data=open(sys.argv[2], "rb").read())
         print(r.status_code, r.text)
     else:
         assert len(sys.argv) == 2
         r = requests.put(target + "/s/" + sys.argv[1].split(".")[-1],
                          headers={"X-RODC-Authentication": key},
-                         data=open(sys.argv[1]).read())
+                         data=open(sys.argv[1], "rb").read())
         print(r.status_code, r.text)
 
 if __name__ == "__main__":
